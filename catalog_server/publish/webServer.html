@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker 发布 web 服务 | RexSun的学习之旅</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="RexSun的个人网站">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.865cefd4.js" as="script"><link rel="preload" href="/assets/js/2.0000db7a.js" as="script"><link rel="preload" href="/assets/js/34.d68ba7fe.js" as="script"><link rel="prefetch" href="/assets/js/10.0fc7c995.js"><link rel="prefetch" href="/assets/js/11.edb73848.js"><link rel="prefetch" href="/assets/js/12.d482591b.js"><link rel="prefetch" href="/assets/js/13.2ac123c1.js"><link rel="prefetch" href="/assets/js/14.85dbac8d.js"><link rel="prefetch" href="/assets/js/15.a6733102.js"><link rel="prefetch" href="/assets/js/16.6fb0a9a2.js"><link rel="prefetch" href="/assets/js/17.ee270483.js"><link rel="prefetch" href="/assets/js/18.b8c70d17.js"><link rel="prefetch" href="/assets/js/19.b992832f.js"><link rel="prefetch" href="/assets/js/20.7b2e2c67.js"><link rel="prefetch" href="/assets/js/21.2019d4bd.js"><link rel="prefetch" href="/assets/js/22.8013c1cf.js"><link rel="prefetch" href="/assets/js/23.2ae79ddc.js"><link rel="prefetch" href="/assets/js/24.a2812e67.js"><link rel="prefetch" href="/assets/js/25.db33446c.js"><link rel="prefetch" href="/assets/js/26.c595a3df.js"><link rel="prefetch" href="/assets/js/27.c8670e98.js"><link rel="prefetch" href="/assets/js/28.555327d2.js"><link rel="prefetch" href="/assets/js/29.366673c4.js"><link rel="prefetch" href="/assets/js/3.91293c93.js"><link rel="prefetch" href="/assets/js/30.a1237a6b.js"><link rel="prefetch" href="/assets/js/31.c81f44df.js"><link rel="prefetch" href="/assets/js/32.4811cab7.js"><link rel="prefetch" href="/assets/js/33.eff05e29.js"><link rel="prefetch" href="/assets/js/35.c7f05deb.js"><link rel="prefetch" href="/assets/js/36.4ca7ea19.js"><link rel="prefetch" href="/assets/js/37.3c3aad9d.js"><link rel="prefetch" href="/assets/js/38.467b63df.js"><link rel="prefetch" href="/assets/js/39.c993f8e0.js"><link rel="prefetch" href="/assets/js/4.43f87e6c.js"><link rel="prefetch" href="/assets/js/40.e6d9ab26.js"><link rel="prefetch" href="/assets/js/41.98d3b26c.js"><link rel="prefetch" href="/assets/js/42.f7fef84f.js"><link rel="prefetch" href="/assets/js/43.25974544.js"><link rel="prefetch" href="/assets/js/44.dc111544.js"><link rel="prefetch" href="/assets/js/5.b2526979.js"><link rel="prefetch" href="/assets/js/6.53e9f0e6.js"><link rel="prefetch" href="/assets/js/7.9f87f5fd.js"><link rel="prefetch" href="/assets/js/8.726fde7e.js"><link rel="prefetch" href="/assets/js/9.f189923e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">RexSun的学习之旅</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/Rex-Xinchao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/Rex-Xinchao" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>环境搭建</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络请求</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>三方平台开发</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>单元测试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>服务器</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/catalog_server/install/gitlabServer.html" class="sidebar-link">安装gitlab</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/catalog_server/install/nginxServer.html" class="sidebar-link">安装nginx</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/catalog_server/install/dockerServer.html" class="sidebar-link">安装docker</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/catalog_server/publish/nodeServer.html" class="sidebar-link">发布NodeServer</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/catalog_server/publish/webServer.html" aria-current="page" class="active sidebar-link">发布WebServer</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/catalog_server/publish/jenkinsServer.html" class="sidebar-link">jenkins自动化发布</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>npm</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试总结</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="docker-发布-web-服务"><a href="#docker-发布-web-服务" class="header-anchor">#</a> docker 发布 web 服务</h3> <ul><li><p>准备文件
+Dockerfile 文件 &amp;&amp; 程序代码 &amp;&amp; nginx.conf</p> <div class="custom-block tip"><p class="custom-block-title">注意</p> <ul><li>因为要支持 https 和域名的缘故，别忘了配置 ssl 协议</li> <li>nginx.conf 的用户指定 nginx (useradd nginx 要不要执行这个命令手动添加用户，待确认)</li></ul></div></li> <li><p>进入服务器目录并生成镜像</p></li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/home/frontend
+
+<span class="token comment">## demo是镜像名称</span>
+docker image build ./ -t demo:1.0.0
+</code></pre></div><ul><li>生成并启动容器</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>docker container create --name demo -p <span class="token number">80</span>:80 -p <span class="token number">443</span>:443 demo:1.0.0
+<span class="token comment">## 参数说明</span>
+<span class="token comment">## -80:80 第一个3000是终端端口，第二个容器端口</span>
+<span class="token comment">## -443:443 https的协议要用到ssl-443端口</span>
+<span class="token comment">## -demo 第一个是容器名称，第二个是镜像名称</span>
+
+<span class="token comment">## 查看全部容器</span>
+docker <span class="token function">ps</span> -a
+
+<span class="token comment">## 启动容器</span>
+docker container start xxxxx<span class="token punctuation">(</span>容器id<span class="token punctuation">)</span>
+
+<span class="token comment">## 进入容器</span>
+docker <span class="token builtin class-name">exec</span> -it xxxxx<span class="token punctuation">(</span>容器id<span class="token punctuation">)</span> /bin/sh
+</code></pre></div><ul><li>文件展示</li></ul> <details class="custom-block details"><summary>dockerfile</summary> <div class="language-shell extra-class"><pre class="language-shell"><code>FROM nginx:1.17.9-alpine
+
+COPY web /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY server.crt /etc/nginx/cert/server.crt
+COPY server.key /etc/nginx/cert/server.key
+
+EXPOSE <span class="token number">80</span>/tcp <span class="token number">443</span>/tcp
+
+CMD <span class="token punctuation">[</span><span class="token string">&quot;nginx&quot;</span>, <span class="token string">&quot;-g&quot;</span>, <span class="token string">&quot;daemon off;&quot;</span><span class="token punctuation">]</span>
+
+</code></pre></div></details> <details class="custom-block details"><summary>nginx.conf</summary> <div class="language-shell extra-class"><pre class="language-shell"><code>user nginx<span class="token punctuation">;</span>
+worker_processes auto<span class="token punctuation">;</span>
+pid /run/nginx.pid<span class="token punctuation">;</span>
+
+events <span class="token punctuation">{</span>
+	worker_connections <span class="token number">768</span><span class="token punctuation">;</span>
+	<span class="token comment"># multi_accept on;</span>
+<span class="token punctuation">}</span>
+
+http <span class="token punctuation">{</span>
+	sendfile on<span class="token punctuation">;</span>
+	keepalive_timeout <span class="token number">65</span><span class="token punctuation">;</span>
+
+	include /etc/nginx/mime.types<span class="token punctuation">;</span>
+	default_type application/octet-stream<span class="token punctuation">;</span>
+
+	server <span class="token punctuation">{</span>
+        listen <span class="token number">443</span> ssl<span class="token punctuation">;</span>
+        server_name rexsun.site www.rexsun.site<span class="token punctuation">;</span>
+		ssl on<span class="token punctuation">;</span>
+		ssl_certificate cert/server.crt<span class="token punctuation">;</span>
+		ssl_certificate_key cert/server.key<span class="token punctuation">;</span>
+		ssl_session_timeout 5m<span class="token punctuation">;</span>
+		ssl_protocols TLSv1 TLSv1.1 TLSv1.2<span class="token punctuation">;</span>
+		ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:<span class="token operator">!</span>aNULL:<span class="token operator">!</span>MD5:<span class="token operator">!</span>RC4:<span class="token operator">!</span>DHE<span class="token punctuation">;</span>
+		ssl_prefer_server_ciphers on<span class="token punctuation">;</span>
+
+		<span class="token comment">#add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains; preload&quot; always;</span>
+		<span class="token comment">#add_header X-Frame-Options DENY;</span>
+		<span class="token comment">#add_header X-Content-Type-Options nosniff;</span>
+		<span class="token comment">#add_header X-Xss-Protection 1;</span>
+
+		location /api/ <span class="token punctuation">{</span>
+            proxy_pass http://121.36.201.82:3000/<span class="token punctuation">;</span>
+			proxy_set_header Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+			proxy_set_header X-Real-IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+			proxy_set_header X-Forwarded-For <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+		location / <span class="token punctuation">{</span>
+            root   /usr/share/nginx/html<span class="token punctuation">;</span>
+            index  index.html<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+
+	server <span class="token punctuation">{</span>
+        listen <span class="token number">80</span><span class="token punctuation">;</span>
+        server_name rexsun.site www.rexsun.site<span class="token punctuation">;</span>
+
+		location /api/ <span class="token punctuation">{</span>
+            proxy_pass http://121.36.201.82:3000/<span class="token punctuation">;</span>
+			proxy_set_header Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+			proxy_set_header X-Real-IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+			proxy_set_header X-Forwarded-For <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+		location / <span class="token punctuation">{</span>
+            root   /usr/share/nginx/html<span class="token punctuation">;</span>
+            index  index.html<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre></div></details></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/catalog_server/publish/nodeServer.html" class="prev">
+        发布NodeServer
+      </a></span> <span class="next"><a href="/catalog_server/publish/jenkinsServer.html">
+        jenkins自动化发布
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.865cefd4.js" defer></script><script src="/assets/js/2.0000db7a.js" defer></script><script src="/assets/js/34.d68ba7fe.js" defer></script>
+  </body>
+</html>
